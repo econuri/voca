@@ -1,30 +1,20 @@
+import { useState } from "react";
+import UserName from "./UserName";
 
-const Hello = () => {
-    function showName() {
-        console.log("Mike");
-    }
-    function showAge(age) {
-        console.log(age);
-    }
-    function showText(txt) {
-        console.log(txt);
+const Hello = ({age}) => {
+    const [name, setName] = useState('Mike');
+    const msg = age > 19 ? "성인 입니다." : "미성년자 입니다.";
+
+    function changeName() {
+        const newName = name === "Mike" ? "Jane" : "Mike";
+        setName(newName);
     }
 
     return (
         <>
-            <h1>Hello</h1>
-            <button onClick={showName}>Show name</button>
-            <button 
-                onClick={() => {
-                    showAge(30);
-                }}
-            >
-                Show age
-            </button>
-            <input type="text" onChange={(e)=>{
-                const txt = e.target.value;
-                showText(txt);
-            }} />
+            <h2 id="name">{name}({age}) : {msg}</h2>
+            <UserName name={name} />
+            <button onClick={changeName}>Change</button>
         </>
         );
 };
