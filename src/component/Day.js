@@ -3,11 +3,11 @@ import React from "react";
 import { useParams } from "react-router";
 
 export default function Day() {
+    const {day} = useParams();        
+    const wordList = dummy.words.filter(word => word.day === Number(day)) ;
 
-    return <>
-        const {day} = useParams();        
-        const wordList = dummy.words.filter(word => word.day === Number(day)) ;
-
+    return (
+    <>
         <h2>Day {day}</h2>
         <table>
             <tbody>
@@ -20,4 +20,5 @@ export default function Day() {
             </tbody>
         </table>
     </>
+    );
 }
